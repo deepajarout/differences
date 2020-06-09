@@ -1,3 +1,3 @@
- <div align=center> # Generator Vs Callback </div>
+ <div align=center> </div> # Generator Vs Callback 
 
 ### What are generators?
