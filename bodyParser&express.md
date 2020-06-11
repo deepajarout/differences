@@ -13,9 +13,34 @@ Node/Express Framework have been used to installing another piece of middleware 
 When Express 4.0 was released they decided to remove the
 bundled middleware from Express and make them separate packages instead. The syntax then changed from 
 app.use(express.json()) to app.use(bodyParser.json()) after installing the bodyParser module.
+```javascript
+
+// calling body-parser to handle the Request Object from POST requests
+var bodyParser = require('body-parser');
+// parse application/json, basically parse incoming Request Object as a JSON Object 
+app.use(bodyParser.json());
+// parse application/x-www-form-urlencoded, basically can only parse incoming Request Object if strings or arrays
+app.use(bodyParser.urlencoded({ extended: false }));
+// combines the 2 above, then you can parse incoming Request Object if object, with nested objects, or generally any type.
+app.use(bodyParser.urlencoded({ extended: true }));
+
+```
 
 bodyParser was added back to Express in release 4.16.0.That means you don't have to use bodyParser.json() 
 anymore if you are on the latest release.You can use express.json() instead.their own body-parser implementation is now included in the default Express package so there is no need for you to download another dependency.
+
+```javascript
+
+// parse application/json, basically parse incoming Request Object as a JSON Object 
+app.use(express.json());
+
+// parse application/x-www-form-urlencoded, basically can only parse incoming Request Object if strings or arrays
+app.use(express.urlencoded({ extended: false }));
+
+// parse incoming Request Object if object, with nested objects, or generally any type.
+app.use(express.urlencoded({ extended: true }));
+
+``` 
 
 
 **note:** There are still some very specific cases where body-parser might still be necessary but for the most part Express’ implementation of body-parser is all you will need for the majority of use cases.
