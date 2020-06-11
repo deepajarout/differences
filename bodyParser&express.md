@@ -1,6 +1,6 @@
-<div align= center><h1>bodyParser.json() vs express.json() & express.urlencoded() & express.json()</h1></div>
+<div align= center><h1>bodyParser.json() vs express.json() & express.urlencoded() vs express.json()</h1></div>
 
-##bodyParser.json() vs express.json() 
+## bodyParser.json() vs express.json() 
 
 
 Earlier versions of Express used to have a lot of ```middleware``` bundled with it. 
