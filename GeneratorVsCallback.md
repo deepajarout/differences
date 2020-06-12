@@ -39,3 +39,64 @@ Generators are used to solve the problem of what is known as **callback hell**. 
 
 This is where generators are useful. One of the most common examples of this is when creating timer functions.
 
+```javascript
+
+function Timedelay(ptime, callback) {
+
+setTimeout(function() {
+  
+    callback("Pausing for " + ptime);
+    
+  }, ptime);
+}
+
+Timedelay(1000, function(message) {
+  
+  console.log(message); //"Pausing for 1000"
+  Timedelay(2000, function(message) {
+    
+    console.log(message);  //"Pausing for 2000"
+    Timedelay(3000, function(message) {
+      
+      console.log(message); //"Pausing for 3000"
+  })
+  })
+})
+
+```
+We are calling the Timedelay as a callback with 1000 as the value.
+Next we want to call the Timedelay function again with 2000 as the value.
+Finally, we want to call the Timedelay function again with 3000 as the value.
+From the above code, you can see that it becomes messier as we want to start calling the function multiple times.
+
+From the below code you can now see how simple it has become to implement the Timedelay function using generators.
+
+```javascript
+
+function Timedelay(ptime, callback) {
+
+setTimeout(function() {
+  
+    callback("Pausing for " + ptime);
+    
+  }, ptime);
+}
+
+function* Messages() {
+yield(Timedelay(1000, function(msg){
+    console.log(msg);}));
+yield(Timedelay(2000, function(msg){
+    console.log(msg);}));
+yield(Timedelay(3000, function(msg){
+    console.log(msg);
+  }));
+}
+
+var msg  = Messages();
+msg;
+msg.next();
+msg.next();
+msg.next();
+
+```
+Generators can also be used to alleviate the problems with nested callbacks and assist in removing what is known as the callback hell. Generators are used to halt the processing of a function. This is accomplished by usage of the 'yield' method in the asynchronous function.
