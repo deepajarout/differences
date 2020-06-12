@@ -23,9 +23,9 @@ console.log(gen); //[object Generator] { ... }
 
 console.log(gen.next());  //[object Object] {done: false,value: 10}
 
-console.log(gen.next());  /[object Object] {done: false,value: null}
+console.log(gen.next());  //[object Object] {done: false,value: null}
 
-console.log(gen.next());  /[object Object] {done: done,value: 15}
+console.log(gen.next());  //[object Object] {done: done,value: 15}
 
 
 ```
